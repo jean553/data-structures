@@ -27,3 +27,23 @@ Implementations:
 
 Remarks:
  * Infinite analog: `stream`
+
+### Linked list
+(implementation of a `list`)
+
+Linear list of nodes. One node contains the data and a pointer to the next item.
+
+Advantages:
+ * fast for inserting and removing items: no need for reallocation or reorganization as a normal array;
+for one inserted or removed node, only one other node has to be modified (the pointer).
+ * `insertion` and `deletion` easily implemented (even for nodes in the middle of the list),
+ * no initial size to set,
+
+Disadvantages:
+ * O(n) find a specific node requires to browse (scan) all the nodes, from the first one to the last one.
+ * They use a lot of memory to store the pointers on the next item,
+ * they have to be read from the first item to the last one,
+
+Implementations:
+ * stack,
+ * queue
