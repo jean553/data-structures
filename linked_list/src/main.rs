@@ -1,7 +1,5 @@
 extern crate core;
 
-use core::default::Default;
-
 struct Node {
     data: u32,
     next: Option<Box<Node>>
@@ -15,32 +13,17 @@ impl Node {
             next: None
         }
     }
-}
 
-struct LinkedList {
-    head: Option<Box<Node>>,
-}
+    pub fn push(self, data: u32) {
 
-impl LinkedList {
-
-    pub fn new() -> Self {
-        LinkedList {
-            head: None,
-        }
-    }
-
-    pub fn push(&mut self, data: u32) {
-
-        let ref mut current = self.head;
+        let mut current = self.next;
 
         loop {
-
-            current = match *current {
+            current = match current {
+                Some(curr) => {curr.next}
                 None => {
-                    &mut Some(Box::new(Node::new(data)))
-                }
-                Some(ref cur) => {
-                    &mut cur.next
+                    Some(Box::new(Node::new(data)));
+                    break;
                 }
             }
         }
@@ -49,8 +32,6 @@ impl LinkedList {
 
 fn main() {
 
-    let mut list = LinkedList::new();
-
-    list.push(10);
-    list.push(20);
+    let node = Node::new(10);
+    node.push(20);
 }
