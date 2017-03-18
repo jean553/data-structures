@@ -1,33 +1,37 @@
 extern crate core;
 
-use core::default::Default;
-
-struct Node<'a> {
-    data: u64,
-    next: Option<&'a Node<'a>>
+struct Node {
+    data: u32,
+    next: Option<Box<Node>>
 }
 
-#[derive(Default)]
-struct LinkedList<'a> {
-    head: Option<Node<'a>>
-}
+impl Node {
 
-impl<'a> LinkedList<'a> {
-    
-    fn insert_at_begin(&mut self, data: u64) {
-
-        let node = Node{
+    pub fn new(data: u32) -> Self {
+        Node {
             data: data,
             next: None
-        };
-        
-        self.head = Some(node);
+        }
+    }
+
+    pub fn push(self, data: u32) {
+
+        let mut current = self.next;
+
+        loop {
+            current = match current {
+                Some(curr) => {curr.next}
+                None => {
+                    Some(Box::new(Node::new(data)));
+                    break;
+                }
+            }
+        }
     }
 }
 
 fn main() {
 
-    let mut list = LinkedList{..Default::default()};
-
-    list.insert_at_begin(10);
+    let node = Node::new(10);
+    node.push(20);
 }
