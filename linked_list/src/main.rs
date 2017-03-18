@@ -7,6 +7,15 @@ struct Node {
 
 impl Node {
 
+    /// Constructs a new node (first node for a linked list)
+    ///
+    /// This method is used to create the first node of a linked list
+    ///
+    /// Example:
+    ///
+    /// ```
+    /// let node = Node::new(10);
+    /// ```
     pub fn new(data: u32) -> Self {
         Node {
             data: data,
@@ -14,6 +23,13 @@ impl Node {
         }
     }
 
+    /// Append a new node at the end of the list
+    ///
+    /// Example:
+    ///
+    /// ```
+    /// node.push(20);
+    /// ```
     pub fn push(self, data: u32) {
 
         let mut current = self.next;
